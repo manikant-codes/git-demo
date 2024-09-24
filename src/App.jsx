@@ -1,7 +1,7 @@
 import { Flowbite } from "flowbite-react/components/Flowbite";
-import { createContext, useState, lazy, Suspense } from "react";
+import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import UseReducerDemo from "./components/demo/useReducerDemo/UseReducerDemo";
+import MyComponent from "./components/demo/classComponentDemo/ClassComponentDemo";
 import Layout from "./layouts/Layout";
 import { customTheme } from "./theme/customTheme";
 
@@ -12,7 +12,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Layout cart={cart} setCart={setCart} />}>
-            <Route path="/" element={<UseReducerDemo />} />
+            {/* new MyComponent({name: "Ram"}) */}
+            <Route path="/" element={<MyComponent name="Ram" />} />
+            {/* <Route path="/" element={<UseReducerDemo />} /> */}
             {/* <Route path="/" element={<Home cart={cart} setCart={setCart} />} />
             <Route
               path="/product/:id"
