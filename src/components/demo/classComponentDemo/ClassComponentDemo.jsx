@@ -5,7 +5,7 @@ const { Component } = require("react");
 class MyComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = { count: 0, name: "", users: null };
+    this.state = { count: 1, name: "", user: null };
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -21,20 +21,50 @@ class MyComponent extends Component {
   };
 
   componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/users")
+    fetch(`https://jsonplaceholder.typicode.com/users/${this.state.count}`)
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        this.setState({ users: data });
+        this.setState({ user: data });
       })
       .catch((err) => {
         console.log(err.message);
       });
   }
 
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if (this.state.name === nextState.name) {
+  //     return false;
+  //   }
+  //   return true;
+  // }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    return 10;
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevState.count !== this.state.count) {
+      fetch(`https://jsonplaceholder.typicode.com/users/${this.state.count}`)
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          this.setState({ user: data });
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
+  }
+
+  componentWillUnmount() {
+    alert("Component will unmount!");
+  }
+
   render() {
-    console.log("users", this.state.users);
+    console.log("user", this.state.user);
     return (
       <div className="flex items-center gap-8">
         <p>{this.state.name}</p>
@@ -43,9 +73,9 @@ class MyComponent extends Component {
         <Button onClick={this.handleIncrement}>+</Button>
 
         <ul>
-          {this.state.users?.map((user) => {
-            return <li key={user.id}>{user.name}</li>;
-          })}
+          {this.state.user && (
+            <li key={this.state.user.id}>{this.state.user.name}</li>
+          )}
         </ul>
       </div>
     );
