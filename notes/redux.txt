@@ -1,0 +1,32 @@
+Redux ek global state management library hai aap ke JS applications ke liye.
+
+Global state yane aise states jinka use aap apne application me ek se jada jagahon pe (components me) kar rahe hoo.
+
+Bina Redux ke bhi global states manage karsakte hoo, lekin Redux global states ko manage karna aasaan banata hai.
+
+Redux Pattern:
+
+Redux me 3 main chize hai.
+
+1. Store
+- Ek object hai.
+- Ek jagah hai jaha aap apne saare global states rakhte hoo.
+
+2. Reducer
+- Ek function hai.
+- Reducer kaam hai store me changes karne ka. Store me kuch bhi badal na hoo aap reducer ko kahoge.
+
+3. Action
+- Ek object hai.
+- Iske help se ham ham reducer ko ye bata paarte hai ke store me kya changes karne hai.
+
+Aur 3 main rules hai.
+
+1. Sare global state store me hone chahiye.
+2. Sirf reducer hi store me changes kar sakta hai.
+3. Action ka use kar ke reducer ko batana padta hai ke kya changes karne hai. 
+
+- Redux implement karne ke liye ham 2 libraries ka use karen ge:
+1. redux-toolkit
+2. react-redux
+
