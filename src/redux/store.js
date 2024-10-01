@@ -1,7 +1,10 @@
-const { configureStore } = require("@reduxjs/toolkit");
+import { configureStore } from "@reduxjs/toolkit";
+import { mobileReducer } from "./slices/mobilesSlice";
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    mobile: mobileReducer,
+  },
 });
 
 export default store;

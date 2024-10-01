@@ -10,7 +10,13 @@ const mobileSlice = createSlice({
       state.mobiles--;
     },
     restock: (state, action) => {
-      state.mobiles++;
+      state.mobiles += action.payload;
     },
   },
 });
+
+export const { buy, restock } = mobileSlice.actions;
+
+export const mobileReducer = mobileSlice.reducer;
+
+// console.log("mobileSlice", mobileSlice);

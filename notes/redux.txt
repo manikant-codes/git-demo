@@ -8,15 +8,15 @@ Redux Pattern:
 
 Redux me 3 main chize hai.
 
-1. Store
+1. Store (Dukaan)
 - Ek object hai.
 - Ek jagah hai jaha aap apne saare global states rakhte hoo.
 
-2. Reducer
+2. Reducer (Dukaandar)
 - Ek function hai.
 - Reducer kaam hai store me changes karne ka. Store me kuch bhi badal na hoo aap reducer ko kahoge.
 
-3. Action
+3. Action (Dukaandar ke Liye Instruction)
 - Ek object hai.
 - Iske help se ham ham reducer ko ye bata paarte hai ke store me kya changes karne hai.
 
