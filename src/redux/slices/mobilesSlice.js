@@ -17,6 +17,6 @@ const mobileSlice = createSlice({
 
 export const { buy, restock } = mobileSlice.actions;
 
-export const mobileReducer = mobileSlice.reducer;
+console.log("buy()", buy());
 
-// console.log("mobileSlice", mobileSlice);
+export const mobileReducer = mobileSlice.reducer;

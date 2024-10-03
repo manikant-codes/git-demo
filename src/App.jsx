@@ -1,5 +1,5 @@
 import { Flowbite } from "flowbite-react/components/Flowbite";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MyComponent from "./components/demo/classComponentDemo/ClassComponentDemo";
 import Layout from "./layouts/Layout";
@@ -8,6 +8,7 @@ import { Button } from "flowbite-react";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import store from "./redux/store";
 import { buy, restock } from "./redux/slices/mobilesSlice";
+import { getUsers } from "./redux/slices/usersSlice";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -17,16 +18,27 @@ function App() {
     return store.mobile.mobiles;
   });
 
+  const users = useSelector((store) => {
+    return store.users.users;
+  });
+
   const dispatch = useDispatch();
 
   function handleBuy() {
-    // console.log(buy());
+    console.log("buy", buy);
+    console.log("buy()", buy());
     dispatch(buy());
   }
 
   function handleRestock() {
     dispatch(restock(5));
   }
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, []);
+
+  console.log("users", users);
 
   return (
     <>
